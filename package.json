@@ -4,6 +4,11 @@
   "description": "Bomberman clone",
   "main": "index.js",
   "scripts": {
+    "distclean": "rm -rf node_modules ; npm run clean",
+    "clean": "rm -rf dist sws-*.tgz",
+    "build": "rollup -c",
+    "start-server": "$(npm bin)/http-server dist -o >/dev/null 2>&1 &",
+    "stop-server": "pkill -f 'http-server dist'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,9 +16,18 @@
     "url": "git+https://Tchou@github.com/Tchou/bomberjs.git"
   },
   "author": "Kim Nguyễn",
-  "license": "GPL-3.0",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Tchou/bomberjs/issues"
   },
-  "homepage": "https://github.com/Tchou/bomberjs#readme"
+  "homepage": "https://github.com/Tchou/bomberjs#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "rollup": "^0.66.6",
+    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-terser": "^3.0.0"
+  },
+  "dependencies": {
+    "npm": "^6.4.1"
+  }
 }
