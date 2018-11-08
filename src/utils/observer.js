@@ -1,6 +1,6 @@
 export class Observer {
 
-    update(subject) {
+    update(subject, ...args) {
 
     }
 
@@ -26,8 +26,9 @@ export class Observable {
         return this;
     }
 
-    notifyObservers() {
-        this.observers.forEach((o) => o.update(this));
+    notifyObservers(...args) {
+        args = [this].concat(args);
+        this.observers.forEach((o) => o.update.apply(o,args));
         return this;
     }
 }

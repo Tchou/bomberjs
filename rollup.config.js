@@ -14,7 +14,8 @@ export default {
         copy ({
             "src/index.html" : "dist/index.html",
             "src/css" : "dist/css",
-            "src/assets" : "dist/assets"
+            "src/assets" : "dist/assets",
+            "src/assets/graphics/favicon.png" : "dist/favicon.ico"
         }),
         terser({
             output: {
