@@ -1,5 +1,6 @@
 import {Layer} from "./layer.js";
 import {Observer} from "../utils/observer.js";
+import {Tile} from "./tile.js";
 
 export class LevelView extends Observer {
 
@@ -11,7 +12,6 @@ export class LevelView extends Observer {
     }
 
     update(level, msg, ...args) {
-        console.log(this);
         switch (msg) {
 
             case "TICK":
@@ -34,12 +34,16 @@ export class LevelView extends Observer {
         } else {
             value = "" + value;
         }
-        console.log(value);
-        
-        this.fg.context.clearRect(100,50,100,100);
-        this.fg.context.fillColor = "#000000";
-        this.fg.context.fillText(value,100,50);
-        this.fg.context.fillRect(100,50,100,100);
+
+        Tile.clear(this.fg.context, 7,0,3,1);
+        this.fg.context.lineWidth = 3;
+        this.fg.context.font = "48px serif";
+        this.fg.context.strokeStyle = "#000000";  
+        this.fg.context.fillStyle = "#ffff00";
+        Tile.drawText(this.fg.context, 7, 0, value);
+ 
+        this.fg.context.fill();
+        this.fg.context.stroke();
     }
 
 
